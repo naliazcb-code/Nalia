@@ -8,41 +8,182 @@
 <meta name="apple-mobile-web-app-title" content="Nalia"/>
 <meta name="theme-color" content="#0d47a1"/>
 <title>Nalia</title>
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d47a1'/><text y='.9em' font-size='80' x='10'>💰</text></svg>"/>
-<meta name="apple-touch-fullscreen" content="yes"/>
-<meta name="mobile-web-app-capable" content="yes"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,system-ui,sans-serif;max-width:480px;margin:0 auto;min-height:100vh;}
-input,select{outline:none;color:#e2e8f0;background:#0a1428;border:1px solid #1e3a6e;border-radius:8px;padding:11px 12px;font-size:16px;width:100%;display:block;margin-bottom:10px;-webkit-appearance:none;}
-button{-webkit-appearance:none;cursor:pointer;font-family:inherit;}
-.card{background:#0d1b3e;border-radius:12px;padding:16px;border:1px solid #1e3a6e;margin-bottom:12px;}
-.lbl{font-size:11px;color:#64b5f6;margin-bottom:6px;margin-top:4px;}
-.stitle{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
-.row{display:flex;gap:8px;margin-bottom:12px;}
-.tbtn{flex:1;padding:10px;border-radius:8px;border:none;font-weight:600;font-size:13px;color:#fff;background:#1a2744;}
-.tbtn.on-blue{background:#1565c0;}
-.tbtn.on-teal{background:#00695c;}
-.tbtn.on-green{background:#1b5e20;}
-.tbtn.on-orange{background:#e65100;}
-.hbtn{padding:7px 12px;border-radius:8px;border:none;font-weight:700;font-size:13px;background:#1a2744;color:#90caf9;margin:0 4px 6px 0;}
-.hbtn.on{background:#1565c0;color:#fff;}
-.dbtn{padding:6px 10px;border-radius:8px;border:none;font-weight:700;font-size:12px;background:#1a2744;color:#90caf9;margin:0 4px 6px 0;}
-.dbtn.on{background:#1565c0;color:#fff;}
-.bigbtn{border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:700;color:#fff;width:100%;margin-top:4px;}
-.preview{background:#0a2010;border-radius:8px;padding:10px;margin-bottom:10px;font-size:12px;}
-.brow{padding:10px 0;border-bottom:1px solid #0a1428;display:flex;justify-content:space-between;align-items:flex-start;}
-.abtn{border:none;border-radius:6px;color:#fff;padding:5px 8px;font-size:11px;cursor:pointer;}
-.bar{background:#1a2744;border-radius:6px;height:8px;overflow:hidden;}
-.barfill{height:8px;border-radius:6px;}
+body{background:#0a0f1e;color:#e2e8f0;font-family:-apple-system,system-ui,sans-serif;max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:30px;}
+.hdr{background:linear-gradient(135deg,#1a237e,#0d47a1);padding:20px 16px 12px;position:sticky;top:0;z-index:10;}
+.tabs{display:flex;overflow-x:auto;background:#0d1b3e;border-bottom:1px solid #1e3a6e;}
 .tab{flex:0 0 auto;padding:10px 14px;font-size:11px;font-weight:600;background:transparent;color:#64b5f6;border:none;border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer;}
 .tab.on{background:#1565c0;color:#fff;border-bottom:2px solid #42a5f5;}
+.pg{padding:16px;display:none;}
+.pg.on{display:block;}
+.card{background:#0d1b3e;border-radius:12px;padding:16px;border:1px solid #1e3a6e;margin-bottom:12px;}
+.lbl{font-size:11px;color:#64b5f6;margin-bottom:6px;display:block;}
+.inp{width:100%;background:#0a1428;border:1px solid #1e3a6e;border-radius:8px;padding:12px;font-size:18px;color:#e2e8f0;display:block;margin-bottom:10px;-webkit-appearance:none;outline:none;}
+.inp:focus{border-color:#1565c0;}
+.row{display:flex;gap:8px;margin-bottom:12px;}
+.tbtn{flex:1;padding:10px;border-radius:8px;border:none;font-weight:600;font-size:13px;color:#fff;background:#1a2744;cursor:pointer;}
+.tbtn.bl{background:#1565c0;}
+.tbtn.tl{background:#00695c;}
+.tbtn.gn{background:#1b5e20;}
+.tbtn.or{background:#e65100;}
+.hbtn{padding:8px 13px;border-radius:8px;border:none;font-weight:700;font-size:14px;background:#1a2744;color:#90caf9;cursor:pointer;margin:0 4px 8px 0;}
+.hbtn.on{background:#1565c0;color:#fff;}
+.dbtn{padding:7px 11px;border-radius:8px;border:none;font-weight:700;font-size:13px;background:#1a2744;color:#90caf9;cursor:pointer;margin:0 4px 8px 0;}
+.dbtn.on{background:#1565c0;color:#fff;}
+.bigbtn{width:100%;border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;margin-top:4px;}
+.errmsg{background:#b71c1c;color:#fff;border-radius:8px;padding:10px;margin-top:8px;font-size:13px;font-weight:600;display:none;}
+.errmsg.on{display:block;}
+.bar{background:#1a2744;border-radius:6px;height:8px;overflow:hidden;margin:6px 0;}
+.barfill{height:8px;border-radius:6px;}
+.brow{padding:10px 0;border-bottom:1px solid #0a1428;display:flex;justify-content:space-between;align-items:flex-start;}
+.abtn{border:none;border-radius:6px;color:#fff;padding:5px 9px;font-size:12px;cursor:pointer;margin-left:6px;}
+.stitle{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.sbox{background:#0a1428;border-radius:10px;padding:12px;}
+.sbox .slbl{font-size:10px;color:#64b5f6;margin-bottom:4px;text-transform:uppercase;}
+.sbox .sval{font-size:17px;font-weight:700;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:0;}
+.pend{font-size:11px;color:#ffa726;padding:6px 8px;background:#1a1000;border-radius:6px;margin-bottom:8px;}
+select{width:100%;background:#0a1428;border:1px solid #1e3a6e;border-radius:8px;padding:11px 12px;font-size:14px;color:#e2e8f0;margin-bottom:10px;-webkit-appearance:none;}
 </style>
 </head>
 <body>
-<div id="app"></div>
+
+<div class="hdr">
+  <div style="font-size:20px;font-weight:800;letter-spacing:2px;">NALIA</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+    <div style="font-size:11px;color:#90caf9;" id="hdrDate"></div>
+    <div id="hdrPend" style="background:#ffa726;color:#000;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;display:none;"></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab on" onclick="showTab('dash')">📊 Resumen</button>
+  <button class="tab" onclick="showTab('reg')">➕ Registrar</button>
+  <button class="tab" onclick="showTab('bank')">🏦 Cuentas</button>
+  <button class="tab" onclick="showTab('cards')">💳 Tarjetas</button>
+  <button class="tab" onclick="showTab('hist')">📅 Historial</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="pg-dash" class="pg on">
+  <div class="card" id="dash-hours"></div>
+  <div class="card" id="dash-week"></div>
+  <div style="background:#0a1a0a;border-radius:12px;padding:16px;border:1px solid #1b5e20;margin-bottom:12px;" id="dash-transfer"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;" id="dash-balances"></div>
+  <div style="background:#1a0a0a;border-radius:12px;padding:16px;border:1px solid #4a1a1a;margin-bottom:12px;" id="dash-debt"></div>
+  <button class="bigbtn" style="background:linear-gradient(135deg,#1b5e20,#2e7d32);" onclick="openModal('week')">🌙 Cerrar Semana (Domingo)</button>
+</div>
+
+<!-- REGISTER -->
+<div id="pg-reg" class="pg">
+  <div class="card">
+    <div class="stitle" style="color:#64b5f6;">Nuevo Bloque</div>
+
+    <div class="row">
+      <button class="tbtn bl" id="btn-amazon" onclick="setType('amazon')">📦 Amazon</button>
+      <button class="tbtn" id="btn-instacart" onclick="setType('instacart')">🛒 Instacart</button>
+    </div>
+
+    <div id="future-row" class="row">
+      <button class="tbtn bl" id="btn-hecho" onclick="setFuture(false)">✅ Bloque hecho</button>
+      <button class="tbtn" id="btn-futuro" onclick="setFuture(true)">📅 Bloque futuro</button>
+    </div>
+
+    <span class="lbl" id="lbl-monto">Monto Bruto ($)</span>
+    <input class="inp" type="number" inputmode="decimal" id="inp-gross" placeholder="0.00" step="0.01" min="0"/>
+
+    <span class="lbl">Día</span>
+    <div id="day-btns" style="margin-bottom:12px;"></div>
+
+    <div id="hours-section">
+      <span class="lbl" id="lbl-hours">Horas</span>
+      <div id="hour-btns" style="margin-bottom:12px;"></div>
+    </div>
+
+    <div id="tips-section">
+      <span class="lbl" id="lbl-tips">Propinas (~24h para llegar)</span>
+      <div class="row">
+        <button class="tbtn gn" id="btn-tips-disp" onclick="setTipsPd(false)">💵 Disponible</button>
+        <button class="tbtn" id="btn-tips-pend" onclick="setTipsPd(true)" style="display:none;">⏳ Pendiente</button>
+      </div>
+      <input class="inp" type="number" inputmode="decimal" id="inp-tips" placeholder="0.00" step="0.01" min="0"/>
+      <div class="pend" id="tips-pend-msg" style="display:none;">⏳ Edita el bloque cuando lleguen las propinas</div>
+    </div>
+    <div class="pend" id="no-tips-msg" style="display:none;color:#546e7a;background:#0a1428;">Las propinas solo aplican a bloques de 1h</div>
+
+    <div id="instant-row" style="display:none;align-items:center;gap:8px;padding:10px;background:#1a1000;border-radius:8px;margin-bottom:10px;">
+      <input type="checkbox" id="chk-instant"/>
+      <label for="chk-instant" style="font-size:12px;color:#ffa726;">⚡ Retiro instantáneo (pasa a semana siguiente)</label>
+    </div>
+
+    <div id="preview" style="background:#0a2010;border-radius:8px;padding:10px;margin-bottom:10px;font-size:12px;display:none;"></div>
+
+    <button class="bigbtn" id="btn-add" style="background:linear-gradient(135deg,#1565c0,#0d47a1);" onclick="addBlock()">+ Agregar Bloque</button>
+    <div class="errmsg" id="err-msg"></div>
+  </div>
+
+  <div class="card" id="hours-bar-card" style="display:none;"></div>
+  <div id="future-list"></div>
+  <div id="amazon-list"></div>
+  <div id="instacart-list"></div>
+</div>
+
+<!-- BANK -->
+<div id="pg-bank" class="pg">
+  <div class="card" id="bank-bofa"></div>
+  <div style="background:#1a0d2b;border-radius:12px;padding:16px;border:1px solid #4a1a6e;margin-bottom:12px;" id="bank-cap"></div>
+  <div class="card">
+    <div class="stitle" style="color:#64b5f6;">Movimiento Manual</div>
+    <span class="lbl">Cuenta</span>
+    <select id="sel-acct"><option value="chk">🏦 BofA Checking</option><option value="sav">💰 Capital One Savings</option></select>
+    <span class="lbl">Tipo</span>
+    <select id="sel-type"><option value="dep">⬆️ Depósito</option><option value="wit">⬇️ Retiro</option></select>
+    <span class="lbl">Monto ($)</span>
+    <input class="inp" type="number" inputmode="decimal" id="inp-bank" placeholder="0.00" step="0.01" min="0"/>
+    <button class="bigbtn" style="background:linear-gradient(135deg,#1565c0,#0d47a1);" onclick="bankTx()">Registrar</button>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div id="pg-cards" class="pg">
+  <div id="cards-list"></div>
+</div>
+
+<!-- HISTORY -->
+<div id="pg-hist" class="pg">
+  <div id="hist-list"></div>
+</div>
+
+<!-- MODAL WEEK -->
+<div id="modal-week" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:100;padding:20px;align-items:center;justify-content:center;">
+  <div style="background:#0d1b3e;border-radius:16px;padding:24px;width:100%;max-width:360px;border:1px solid #1565c0;">
+    <div style="font-size:16px;font-weight:700;margin-bottom:4px;">🌙 Cerrar Semana</div>
+    <div id="modal-week-body"></div>
+    <div style="display:flex;gap:10px;margin-top:16px;">
+      <button style="flex:1;background:#1a2744;color:#fff;border:none;border-radius:10px;padding:12px;font-weight:600;cursor:pointer;" onclick="closeModal()">Cancelar</button>
+      <button style="flex:1;background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#fff;border:none;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;" onclick="doCloseWeek()">Confirmar ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDIT -->
+<div id="modal-edit" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:100;padding:20px;align-items:center;justify-content:center;">
+  <div style="background:#0d1b3e;border-radius:16px;padding:24px;width:100%;max-width:360px;border:1px solid #1565c0;">
+    <div style="font-size:16px;font-weight:700;margin-bottom:16px;">✏️ Editar Bloque</div>
+    <span class="lbl">Monto Bruto ($)</span>
+    <input class="inp" type="number" inputmode="decimal" id="edit-gross" placeholder="0.00" step="0.01"/>
+    <div id="edit-hours-section"></div>
+    <div id="edit-tips-section"></div>
+    <div style="display:flex;gap:10px;margin-top:8px;">
+      <button style="flex:1;background:#1a2744;color:#fff;border:none;border-radius:10px;padding:12px;font-weight:600;cursor:pointer;" onclick="closeModal()">Cancelar</button>
+      <button style="flex:1;background:linear-gradient(135deg,#1565c0,#0d47a1);color:#fff;border:none;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;" onclick="saveEdit()">Guardar ✓</button>
+    </div>
+  </div>
+</div>
+
 <script>
-var SK="nalia_v5";
+var SK="nalia_v6";
 var AH=[1,1.5,2,3,3.5,4,4.5];
 var DAYS=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
 var MAX_H=40;
@@ -53,32 +194,18 @@ var DS={checking:0,savings:0,amazon:[],future:[],instacart:[],carry_net:0,carry_
     {id:3,name:"Capital One (2)",bal:1463.76,lim:1700,min:52,due:"Jun 20",over:0}
   ],week_start:new Date().toISOString(),history:[]};
 
-// Safe storage wrapper for Safari PWA
-var _mem = null;
-function load(){
-  try{
-    var s=localStorage.getItem(SK);
-    if(s){var p=JSON.parse(s);return Object.assign(JSON.parse(JSON.stringify(DS)),p);}
-    return JSON.parse(JSON.stringify(DS));
-  }catch(e){
-    if(_mem) return Object.assign(JSON.parse(JSON.stringify(DS)),_mem);
-    return JSON.parse(JSON.stringify(DS));
-  }
-}
-function save(){
-  try{localStorage.setItem(SK,JSON.stringify(st));_mem=JSON.parse(JSON.stringify(st));}
-  catch(e){_mem=JSON.parse(JSON.stringify(st));}
-}
+function load(){try{var s=localStorage.getItem(SK);return s?Object.assign(JSON.parse(JSON.stringify(DS)),JSON.parse(s)):JSON.parse(JSON.stringify(DS));}catch(e){return JSON.parse(JSON.stringify(DS));}}
+function save(){try{localStorage.setItem(SK,JSON.stringify(st));}catch(e){}}
 function fmt(n){return"$"+(+(n||0)).toFixed(2);}
-function pf(v){return parseFloat(String(v||"").replace(",","."))||0;}
+function pf(v){return parseFloat(String(v||0).replace(",","."))||0;}
 function todayStr(){return new Date().toLocaleDateString("es-US",{weekday:"short",month:"short",day:"numeric"});}
 function isSun(){return new Date().getDay()===0;}
 
 var st=load();
-var tab="dashboard";
-var modal=null;
-var editData=null;
-var rf={type:"amazon",future:false,day:null,hours:null,gross:"",tips:"",tipsPd:false,instant:false,note:""};
+
+// Form state
+var fType="amazon", fFuture=false, fDay=null, fHours=null, fTipsPd=false;
+var editId=null, editType=null, editHours=null, editTipsPd=false;
 
 function calc(){
   var ab=0,at=0,aig=0,ait=0;
@@ -89,8 +216,7 @@ function calc(){
   }
   var ig=0;
   for(var i=0;i<st.instacart.length;i++) ig+=st.instacart[i].gross;
-  var an=ab*0.8,as2=ab*0.2,iN=ig*0.8,is2=ig*0.2;
-  var tn=an+iN,ts=as2+is2;
+  var an=ab*0.8,as2=ab*0.2,iN=ig*0.8,is2=ig*0.2,tn=an+iN,ts=as2+is2;
   var co=st.carry_net||0,ct=st.carry_tips||0;
   var pd=0;
   for(var i=0;i<st.amazon.length;i++) if(st.amazon[i].tipsPd) pd++;
@@ -103,33 +229,129 @@ function calc(){
     co:co,ct:ct,toChk:tn+co,toCap:ts+at+ct,pd:pd,td:td,hw:hw,hf:hf,hu:hu,hl:hl};
 }
 
+// ---- FORM CONTROL (no re-render) ----
+function setType(t){
+  fType=t;
+  document.getElementById("btn-amazon").className="tbtn"+(t==="amazon"?" bl":"");
+  document.getElementById("btn-instacart").className="tbtn"+(t==="instacart"?" tl":"");
+  document.getElementById("future-row").style.display=t==="amazon"?"flex":"none";
+  document.getElementById("hours-section").style.display=t==="amazon"?"block":"none";
+  document.getElementById("btn-tips-pend").style.display=t==="amazon"?"block":"none";
+  document.getElementById("lbl-tips").textContent=t==="amazon"?"Propinas (~24h para llegar)":"Propinas";
+  updateHoursBar();
+  updateTipsVisibility();
+}
+
+function setFuture(v){
+  fFuture=v;
+  document.getElementById("btn-hecho").className="tbtn"+(v?"":"  bl");
+  document.getElementById("btn-futuro").className="tbtn"+(v?" or":"");
+  document.getElementById("lbl-monto").textContent=v?"Monto estimado ($)":"Monto Bruto ($)";
+  document.getElementById("btn-add").textContent=v?"📅 Guardar Bloque Futuro":"+ Agregar Bloque";
+  document.getElementById("btn-add").style.background=v?"linear-gradient(135deg,#e65100,#bf360c)":"linear-gradient(135deg,#1565c0,#0d47a1)";
+}
+
+function setDay(d){
+  fDay=d;
+  document.querySelectorAll(".dbtn").forEach(function(b,i){
+    b.className="dbtn"+(i===d?" on":"");
+  });
+}
+
+function setHours(h){
+  fHours=h;
+  document.querySelectorAll(".hbtn").forEach(function(b){
+    b.className="hbtn"+(parseFloat(b.dataset.h)===h?" on":"");
+  });
+  updateTipsVisibility();
+  updateInstantVisibility();
+}
+
+function setTipsPd(v){
+  fTipsPd=v;
+  document.getElementById("btn-tips-disp").className="tbtn"+(v?"":"  gn");
+  document.getElementById("btn-tips-pend").className="tbtn"+(v?" or":"");
+  document.getElementById("inp-tips").style.display=v?"none":"block";
+  document.getElementById("tips-pend-msg").style.display=v?"block":"none";
+}
+
+function updateTipsVisibility(){
+  var show=fType==="instacart"||(fType==="amazon"&&fHours===1);
+  document.getElementById("tips-section").style.display=show?"block":"none";
+  document.getElementById("no-tips-msg").style.display=(!show&&fType==="amazon")?"block":"none";
+}
+
+function updateInstantVisibility(){
+  var show=fType==="amazon"&&isSun()&&!fFuture;
+  document.getElementById("instant-row").style.display=show?"flex":"none";
+}
+
+function updateHoursBar(){
+  var c=calc();
+  var card=document.getElementById("hours-bar-card");
+  if(fType!=="amazon"){card.style.display="none";return;}
+  card.style.display="block";
+  var pct=Math.min(100,(c.hu/MAX_H)*100);
+  var col=pct>=90?"#ef5350":pct>=70?"#ffa726":"#66bb6a";
+  card.innerHTML='<div style="display:flex;justify-content:space-around;margin-bottom:8px;">'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#42a5f5;">HECHOS</div><div style="font-size:18px;font-weight:800;color:#42a5f5;">'+c.hw+'h</div></div>'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#ffa726;">PROG.</div><div style="font-size:18px;font-weight:800;color:#ffa726;">'+c.hf+'h</div></div>'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#66bb6a;">LIBRES</div><div style="font-size:18px;font-weight:800;color:#66bb6a;">'+c.hl+'h</div></div>'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#546e7a;">MAX</div><div style="font-size:18px;font-weight:800;color:#546e7a;">'+MAX_H+'h</div></div>'+
+    '</div><div class="bar"><div class="barfill" style="width:'+pct+'%;background:'+col+';"></div></div>'+
+    '<div style="font-size:10px;color:#546e7a;text-align:right;margin-top:4px;">'+c.hu+'h de '+MAX_H+'h</div>';
+  // Update lbl-hours
+  var lh=document.getElementById("lbl-hours");
+  if(lh) lh.textContent="Horas ("+c.hl+"h libres)";
+}
+
+function showErr(msg){
+  var el=document.getElementById("err-msg");
+  el.textContent=msg;
+  el.className="errmsg on";
+}
+function clearErr(){
+  var el=document.getElementById("err-msg");
+  el.className="errmsg";
+}
+
 function addBlock(){
-  // Read directly from DOM elements
-  var gEl=document.getElementById("rfGross");
-  var tEl=document.getElementById("rfTips");
-  var gVal=gEl?gEl.value:"";
-  var tVal=tEl?tEl.value:"";
-  // Also check rf values as fallback
-  if(!gVal&&rf.gross) gVal=rf.gross;
-  if(!tVal&&rf.tips) tVal=rf.tips;
-  rf.gross=gVal;
-  rf.tips=tVal;
-  var g=pf(gVal), t=rf.tipsPd?0:pf(tVal);
-  var dayLabel=rf.day!==null?DAYS[rf.day]:todayStr();
-  if(rf.type==="amazon"&&rf.future){
-    if(!rf.hours){alert("Selecciona las horas");return;}
-    st.future.push({id:Date.now(),hours:rf.hours,gross:g,tips:t,tipsPd:rf.tipsPd,day:rf.day,note:rf.note});
-    rf.gross="";rf.tips="";rf.note="";rf.hours=null;
-    save();render();return;
+  clearErr();
+  var g=pf(document.getElementById("inp-gross").value);
+  var t=fTipsPd?0:pf(document.getElementById("inp-tips")?document.getElementById("inp-tips").value:0);
+  var dayLabel=fDay!==null?DAYS[fDay]:todayStr();
+
+  if(fType==="amazon"&&fFuture){
+    if(!fHours){showErr("⚠️ Selecciona las horas");return;}
+    st.future.push({id:Date.now(),hours:fHours,gross:g,tips:t,tipsPd:fTipsPd,day:fDay,note:""});
+    save();
+    document.getElementById("inp-gross").value="";
+    document.getElementById("inp-tips").value="";
+    fHours=null;
+    document.querySelectorAll(".hbtn").forEach(function(b){b.className="hbtn";});
+    refreshLists();
+    updateHoursBar();
+    return;
   }
-  if(!g||g<=0){alert("Ingresa un monto válido");return;}
-  if(rf.type==="amazon"&&!rf.hours){alert("Selecciona las horas");return;}
-  var b={id:Date.now(),type:rf.type,gross:g,tips:t,tipsPd:rf.tipsPd,
-    instant:rf.type==="amazon"&&isSun()&&rf.instant,
-    hours:rf.hours,day:rf.day,note:rf.note,date:dayLabel,ts:new Date().toISOString()};
-  if(rf.type==="amazon") st.amazon.push(b); else st.instacart.push(b);
-  rf.gross="";rf.tips="";rf.note="";rf.hours=null;
-  save();render();
+
+  if(!g||g<=0){showErr("⚠️ Ingresa el monto bruto");return;}
+  if(fType==="amazon"&&!fHours){showErr("⚠️ Selecciona las horas");return;}
+
+  var instant=fType==="amazon"&&isSun()&&document.getElementById("chk-instant").checked;
+  var b={id:Date.now(),type:fType,gross:g,tips:t,tipsPd:fTipsPd,
+    instant:instant,hours:fHours,day:fDay,note:"",date:dayLabel,ts:new Date().toISOString()};
+
+  if(fType==="amazon") st.amazon.push(b);
+  else st.instacart.push(b);
+  save();
+
+  document.getElementById("inp-gross").value="";
+  if(document.getElementById("inp-tips")) document.getElementById("inp-tips").value="";
+  fHours=null;
+  document.querySelectorAll(".hbtn").forEach(function(b){b.className="hbtn";});
+  refreshLists();
+  updateHoursBar();
+  refreshDash();
 }
 
 function doneFuture(id){
@@ -141,79 +363,147 @@ function doneFuture(id){
   st.future.splice(idx,1);
   if(b.gross>0){
     st.amazon.push({id:Date.now(),type:"amazon",gross:b.gross,tips:b.tips,tipsPd:b.tipsPd,
-      instant:false,hours:b.hours,day:b.day,note:b.note||"",date:dayLabel,ts:new Date().toISOString()});
-  } else {
-    rf.type="amazon";rf.hours=b.hours;rf.day=b.day;rf.note=b.note||"";
-    rf.tipsPd=b.tipsPd;rf.future=false;rf.gross="";rf.tips="";
-    tab="register";
+      instant:false,hours:b.hours,day:b.day,note:"",date:dayLabel,ts:new Date().toISOString()});
   }
-  save();render();
+  save();refreshLists();updateHoursBar();refreshDash();
 }
 
 function delFuture(id){
-  if(!confirm("¿Eliminar bloque programado?"))return;
   for(var i=0;i<st.future.length;i++) if(st.future[i].id===id){st.future.splice(i,1);break;}
-  save();render();
+  save();refreshLists();updateHoursBar();refreshDash();
 }
 
 function delBlock(type,id){
-  if(!confirm("¿Eliminar bloque?"))return;
   var arr=type==="amazon"?st.amazon:st.instacart;
   for(var i=0;i<arr.length;i++) if(arr[i].id===id){arr.splice(i,1);break;}
-  save();render();
+  save();refreshLists();updateHoursBar();refreshDash();
 }
 
 function openEdit(type,id){
   var arr=type==="amazon"?st.amazon:st.instacart;
-  for(var i=0;i<arr.length;i++){
-    if(arr[i].id===id){
-      editData=JSON.parse(JSON.stringify(arr[i]));
-      editData.btype=type;
-      editData.grossStr=String(arr[i].gross||"");
-      editData.tipsStr=String(arr[i].tips||"");
-      break;
-    }
+  var b=null;
+  for(var i=0;i<arr.length;i++) if(arr[i].id===id){b=arr[i];break;}
+  if(!b)return;
+  editId=id;editType=type;editHours=b.hours;editTipsPd=b.tipsPd;
+  document.getElementById("edit-gross").value=b.gross||"";
+
+  // Hours section (amazon only)
+  var hs=document.getElementById("edit-hours-section");
+  if(type==="amazon"){
+    var hhtml='<span class="lbl">Horas</span><div style="display:flex;flex-wrap:wrap;margin-bottom:12px;">';
+    for(var i=0;i<AH.length;i++) hhtml+='<button class="hbtn'+(b.hours===AH[i]?" on":"")+'" data-h="'+AH[i]+'" onclick="setEditHours('+AH[i]+')">'+AH[i]+'h</button>';
+    hhtml+='</div>';
+    hs.innerHTML=hhtml;
+  } else { hs.innerHTML=""; }
+
+  // Tips section
+  var ts2=document.getElementById("edit-tips-section");
+  var showTips=type==="instacart"||(type==="amazon"&&b.hours===1);
+  if(showTips){
+    ts2.innerHTML='<span class="lbl">Propinas</span>'+
+      '<div class="row">'+
+      '<button class="tbtn'+(b.tipsPd?"":" gn")+'" id="ebtn-disp" onclick="setEditTipsPd(false)">💵 Disponible</button>'+
+      (type==="amazon"?'<button class="tbtn'+(b.tipsPd?" or":"")+'" id="ebtn-pend" onclick="setEditTipsPd(true)">⏳ Pendiente</button>':"")+
+      '</div>'+
+      (b.tipsPd?
+        '<div class="pend">⏳ Pendiente — edita cuando lleguen</div>':
+        '<input class="inp" type="number" inputmode="decimal" id="edit-tips" placeholder="0.00" value="'+(b.tips||0)+'" step="0.01"/>'
+      );
+  } else { ts2.innerHTML=''; }
+
+  var m=document.getElementById("modal-edit");
+  m.style.display="flex";
+}
+
+function setEditHours(h){
+  editHours=h;
+  document.querySelectorAll("#edit-hours-section .hbtn").forEach(function(b){
+    b.className="hbtn"+(parseFloat(b.dataset.h)===h?" on":"");
+  });
+}
+
+function setEditTipsPd(v){
+  editTipsPd=v;
+  var d=document.getElementById("ebtn-disp"),p=document.getElementById("ebtn-pend");
+  if(d) d.className="tbtn"+(v?"":" gn");
+  if(p) p.className="tbtn"+(v?" or":"");
+  var ts2=document.getElementById("edit-tips-section");
+  var existing=document.getElementById("edit-tips");
+  if(v){
+    if(existing) existing.style.display="none";
+  } else {
+    if(existing) existing.style.display="block";
+    else ts2.innerHTML+='<input class="inp" type="number" inputmode="decimal" id="edit-tips" placeholder="0.00" value="0" step="0.01"/>';
   }
-  render();
 }
 
 function saveEdit(){
-  if(!editData)return;
-  var arr=editData.btype==="amazon"?st.amazon:st.instacart;
+  var g=pf(document.getElementById("edit-gross").value);
+  var tEl=document.getElementById("edit-tips");
+  var t=editTipsPd?0:pf(tEl?tEl.value:0);
+  var arr=editType==="amazon"?st.amazon:st.instacart;
   for(var i=0;i<arr.length;i++){
-    if(arr[i].id===editData.id){
-      arr[i].gross=pf(editData.grossStr)||arr[i].gross;
-      arr[i].tips=editData.tipsPd?0:pf(editData.tipsStr);
-      arr[i].tipsPd=editData.tipsPd;
-      arr[i].hours=editData.hours;
-      arr[i].note=editData.note||"";
+    if(arr[i].id===editId){
+      arr[i].gross=g||arr[i].gross;
+      arr[i].tips=t;
+      arr[i].tipsPd=editTipsPd;
+      if(editType==="amazon") arr[i].hours=editHours||arr[i].hours;
       break;
     }
   }
-  editData=null;save();render();
+  save();closeModal();refreshLists();refreshDash();
 }
 
-function closeWeek(){
+function closeModal(){
+  document.getElementById("modal-week").style.display="none";
+  document.getElementById("modal-edit").style.display="none";
+}
+
+function openModal(type){
+  if(type==="week"){
+    var c=calc();
+    var html='<div style="font-size:12px;color:#546e7a;margin-bottom:12px;">'+c.hw+'h trabajadas</div>';
+    html+='<div style="background:#0d2b1a;border-radius:10px;padding:14px;margin-bottom:10px;">';
+    html+='<div style="font-size:11px;color:#64b5f6;font-weight:600;margin-bottom:8px;">🏦 Bank of America</div>';
+    html+=rw("Amazon neto",fmt(c.an),"#42a5f5")+rw("Instacart neto",fmt(c.iN),"#26c6da")+rw("Carry-over",fmt(c.co),"#ef5350");
+    html+='<div style="border-top:1px solid #1e3a6e;margin:6px 0;"></div>'+rw("Total → BofA",fmt(c.toChk),"#66bb6a",true)+"</div>";
+    html+='<div style="background:#1a0d2b;border-radius:10px;padding:14px;">';
+    html+='<div style="font-size:11px;color:#ce93d8;font-weight:600;margin-bottom:8px;">💰 Capital One</div>';
+    html+=rw("Ahorro 20% Amazon",fmt(c.as2),"#ffa726")+rw("Ahorro 20% Instacart",fmt(c.is2),"#ffa726")+rw("Propinas",fmt(c.at+c.ct),"#ab47bc");
+    html+='<div style="border-top:1px solid #2a1a3e;margin:6px 0;"></div>'+rw("Total → Capital One",fmt(c.toCap),"#ab47bc",true)+"</div>";
+    if(c.aig>0) html+='<div class="pend" style="margin-top:10px;">⚡ '+fmt(c.aig*0.8)+' pasa a próxima semana</div>';
+    document.getElementById("modal-week-body").innerHTML=html;
+    document.getElementById("modal-week").style.display="flex";
+  }
+}
+
+function doCloseWeek(){
   var c=calc();
-  var prevC=st.checking,prevS=st.savings;
-  var cards=JSON.parse(JSON.stringify(st.cards));
+  var pc=st.checking,ps=st.savings,cards=JSON.parse(JSON.stringify(st.cards));
   var hist=JSON.parse(JSON.stringify(st.history||[]));
   hist.unshift({week:st.week_start,an:c.an,iN:c.iN,ts:c.ts,tips:c.at+c.ct,co:c.co,toChk:c.toChk,toCap:c.toCap,hw:c.hw});
   st=JSON.parse(JSON.stringify(DS));
-  st.checking=prevC+c.toChk;
-  st.savings=prevS+c.toCap;
-  st.carry_net=c.aig*0.8;
-  st.carry_tips=c.ait;
-  st.cards=cards;
-  st.week_start=new Date().toISOString();
-  st.history=hist;
-  modal=null;save();render();
+  st.checking=pc+c.toChk;st.savings=ps+c.toCap;
+  st.carry_net=c.aig*0.8;st.carry_tips=c.ait;
+  st.cards=cards;st.week_start=new Date().toISOString();st.history=hist;
+  save();closeModal();refreshAll();
+}
+
+function bankTx(){
+  var acct=document.getElementById("sel-acct").value;
+  var type=document.getElementById("sel-type").value;
+  var amt=pf(document.getElementById("inp-bank").value);
+  if(!amt||amt<=0)return;
+  if(type==="dep"){if(acct==="chk")st.checking+=amt;else st.savings+=amt;}
+  else{if(acct==="chk")st.checking-=amt;else st.savings-=amt;}
+  document.getElementById("inp-bank").value="";
+  save();refreshBank();refreshDash();
 }
 
 function payCard(id){
-  var s=prompt("¿Cuánto vas a pagar desde Capital One Savings?");
+  var s=document.getElementById("pay-inp-"+id);
   if(!s)return;
-  var amt=pf(s);
+  var amt=pf(s.value);
   if(!amt||amt<=0)return;
   st.savings-=amt;
   for(var i=0;i<st.cards.length;i++){
@@ -223,530 +513,246 @@ function payCard(id){
       break;
     }
   }
-  save();render();
-}
-
-function bankTx(){
-  var acct=document.getElementById("bAcct").value;
-  var type=document.getElementById("bType").value;
-  var amt=pf(document.getElementById("bAmt").value);
-  if(!amt||amt<=0){alert("Ingresa un monto válido");return;}
-  if(type==="dep"){if(acct==="chk")st.checking+=amt;else st.savings+=amt;}
-  else{if(acct==="chk")st.checking-=amt;else st.savings-=amt;}
-  document.getElementById("bAmt").value="";
-  save();render();
-}
-
-// ---- UI helpers (no inline onclick with quotes) ----
-function h(tag,cls,style,inner){
-  var s="<"+tag;
-  if(cls) s+=' class="'+cls+'"';
-  if(style) s+=' style="'+style+'"';
-  s+=">"+inner+"</"+tag+">";
-  return s;
-}
-
-function sbox(l,v,col){
-  return '<div style="background:#0a1428;border-radius:10px;padding:12px;">'+
-    '<div style="font-size:10px;color:#64b5f6;margin-bottom:4px;text-transform:uppercase;">'+l+'</div>'+
-    '<div style="font-size:17px;font-weight:700;color:'+col+';">'+v+'</div></div>';
+  s.value="";
+  save();refreshCards();refreshDash();refreshBank();
 }
 
 function rw(l,v,col,bold){
-  return '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">'+
-    '<span style="color:#90caf9;">'+l+'</span>'+
-    '<span style="color:'+col+';font-weight:'+(bold?700:600)+';">'+v+'</span></div>';
+  return '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;"><span style="color:#90caf9;">'+l+'</span><span style="color:'+col+';font-weight:'+(bold?700:600)+';">'+v+'</span></div>';
 }
 
-function barHtml(pct,col){
-  return '<div class="bar"><div class="barfill" style="width:'+pct+'%;background:'+col+';"></div></div>';
-}
+function refreshDash(){
+  var c=calc();
+  // Header
+  document.getElementById("hdrDate").textContent=todayStr()+" · Dom→Sáb";
+  var hp=document.getElementById("hdrPend");
+  if(c.pd>0){hp.textContent="⏳ "+c.pd+" propina(s)";hp.style.display="block";}
+  else hp.style.display="none";
 
-function hoursRow(c){
+  // Hours card
   var pct=Math.min(100,(c.hu/MAX_H)*100);
   var col=pct>=90?"#ef5350":pct>=70?"#ffa726":"#66bb6a";
-  return '<div style="display:flex;justify-content:space-around;margin-bottom:8px;">'+
-    '<div style="text-align:center;"><div style="font-size:10px;color:#42a5f5;">HECHOS</div><div style="font-size:18px;font-weight:800;color:#42a5f5;">'+c.hw+'h</div></div>'+
-    '<div style="text-align:center;"><div style="font-size:10px;color:#ffa726;">PROG.</div><div style="font-size:18px;font-weight:800;color:#ffa726;">'+c.hf+'h</div></div>'+
-    '<div style="text-align:center;"><div style="font-size:10px;color:#66bb6a;">LIBRES</div><div style="font-size:18px;font-weight:800;color:#66bb6a;">'+c.hl+'h</div></div>'+
-    '<div style="text-align:center;"><div style="font-size:10px;color:#546e7a;">MAX</div><div style="font-size:18px;font-weight:800;color:#546e7a;">'+MAX_H+'h</div></div>'+
-    '</div>'+barHtml(pct,col)+
+  document.getElementById("dash-hours").innerHTML=
+    '<div style="display:flex;justify-content:space-around;margin-bottom:8px;">'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#42a5f5;">HECHOS</div><div style="font-size:20px;font-weight:800;color:#42a5f5;">'+c.hw+'h</div></div>'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#ffa726;">PROG.</div><div style="font-size:20px;font-weight:800;color:#ffa726;">'+c.hf+'h</div></div>'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#66bb6a;">LIBRES</div><div style="font-size:20px;font-weight:800;color:#66bb6a;">'+c.hl+'h</div></div>'+
+    '<div style="text-align:center;"><div style="font-size:10px;color:#546e7a;">MAX</div><div style="font-size:20px;font-weight:800;color:#546e7a;">'+MAX_H+'h</div></div>'+
+    '</div><div class="bar"><div class="barfill" style="width:'+pct+'%;background:'+col+';"></div></div>'+
     '<div style="font-size:10px;color:#546e7a;text-align:right;margin-top:4px;">'+c.hu+'h de '+MAX_H+'h</div>';
-}
 
-function render(){
-  var c=calc();
-  var html="";
-
-  // HEADER
-  html+='<div style="background:linear-gradient(135deg,#1a237e,#0d47a1);padding:20px 16px 12px;position:sticky;top:0;z-index:10;">';
-  html+='<div style="font-size:20px;font-weight:800;letter-spacing:2px;">NALIA</div>';
-  html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">';
-  html+='<div style="font-size:11px;color:#90caf9;">'+todayStr()+' · Dom→Sáb</div>';
-  if(c.pd>0) html+='<div style="background:#ffa726;color:#000;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px;">⏳ '+c.pd+'</div>';
-  html+='</div></div>';
-
-  // TABS
-  var tabs=[["dashboard","📊"],["register","➕"],["bank","🏦"],["cards","💳"],["history","📅"]];
-  var tabLabels=["Resumen","Registrar","Cuentas","Tarjetas","Historial"];
-  html+='<div style="display:flex;overflow-x:auto;background:#0d1b3e;border-bottom:1px solid #1e3a6e;">';
-  for(var i=0;i<tabs.length;i++){
-    html+='<button data-tab="'+tabs[i][0]+'" class="tab'+(tab===tabs[i][0]?" on":"")+'">';
-    html+=tabs[i][1]+' '+tabLabels[i]+'</button>';
-  }
-  html+='</div>';
-  html+='<div style="padding:16px;">';
-
-  // ===== DASHBOARD =====
-  if(tab==="dashboard"){
-    html+='<div class="card">'+hoursRow(c)+'</div>';
-    html+='<div class="card">';
-    html+='<div class="stitle" style="color:#64b5f6;">Esta Semana</div>';
-    html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">';
-    html+=sbox("Amazon Neto",fmt(c.an),"#42a5f5")+sbox("Instacart Neto",fmt(c.iN),"#26c6da");
-    html+=sbox("Total Neto",fmt(c.tn),"#66bb6a")+sbox("Ahorro 20%",fmt(c.ts),"#ffa726");
-    html+=sbox("Propinas",fmt(c.at),"#ab47bc")+sbox("Carry-over",fmt(c.co),"#ef5350");
-    html+='</div></div>';
-    html+='<div style="background:#0a1a0a;border-radius:12px;padding:16px;border:1px solid #1b5e20;margin-bottom:12px;">';
-    html+='<div class="stitle" style="color:#a5d6a7;">🌙 Transferencia del Domingo</div>';
-    html+='<div style="background:#0d2b1a;border-radius:10px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">';
-    html+='<div><div style="font-size:11px;color:#64b5f6;">🏦 Bank of America</div><div style="font-size:10px;color:#546e7a;">Neto + carry-over</div></div>';
-    html+='<div style="font-size:22px;font-weight:800;color:#66bb6a;">'+fmt(c.toChk)+'</div></div>';
-    html+='<div style="background:#1a0d2b;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;">';
-    html+='<div><div style="font-size:11px;color:#ce93d8;">💰 Capital One Savings</div><div style="font-size:10px;color:#546e7a;">20% + propinas</div></div>';
-    html+='<div style="font-size:22px;font-weight:800;color:#ab47bc;">'+fmt(c.toCap)+'</div></div></div>';
-    html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">';
-    html+='<div class="card" style="margin-bottom:0;"><div style="font-size:10px;color:#64b5f6;margin-bottom:4px;">🏦 BofA Checking</div>';
-    html+='<div style="font-size:22px;font-weight:800;color:'+(st.checking>=0?"#66bb6a":"#ef5350")+';">'+fmt(st.checking)+'</div>';
-    html+='<div style="font-size:9px;color:#546e7a;">Gastos del mes</div></div>';
-    html+='<div style="background:#1a0d2b;border-radius:12px;padding:14px;border:1px solid #4a1a6e;"><div style="font-size:10px;color:#ce93d8;margin-bottom:4px;">💰 Capital One</div>';
-    html+='<div style="font-size:22px;font-weight:800;color:#ab47bc;">'+fmt(st.savings)+'</div>';
-    html+='<div style="font-size:9px;color:#546e7a;">Ahorro acumulado</div></div></div>';
-    html+='<div style="background:#1a0a0a;border-radius:12px;padding:16px;border:1px solid #4a1a1a;margin-bottom:12px;">';
-    html+='<div class="stitle" style="color:#ef9a9a;">Deuda Total</div>';
-    html+='<div style="font-size:28px;font-weight:800;color:#ef5350;">'+fmt(c.td)+'</div></div>';
-    html+='<button data-action="openweek" class="bigbtn" style="background:linear-gradient(135deg,#1b5e20,#2e7d32);">🌙 Cerrar Semana (Domingo)</button>';
-  }
-
-  // ===== REGISTER =====
-  if(tab==="register"){
-    var pg=pf(rf.gross), pt=pf(rf.tips);
-    html+='<div class="card">';
-    html+='<div class="stitle" style="color:#64b5f6;">Nuevo Bloque</div>';
-
-    // Type toggle
-    html+='<div class="row">';
-    html+='<button data-rf="type:amazon" class="tbtn'+(rf.type==="amazon"?" on-blue":"")+'">📦 Amazon</button>';
-    html+='<button data-rf="type:instacart" class="tbtn'+(rf.type==="instacart"?" on-teal":"")+'">🛒 Instacart</button>';
-    html+='</div>';
-
-    // Hecho/Futuro (Amazon only)
-    if(rf.type==="amazon"){
-      html+='<div class="row">';
-      html+='<button data-rf="future:false" class="tbtn'+(!rf.future?" on-blue":"")+'">✅ Bloque hecho</button>';
-      html+='<button data-rf="future:true" class="tbtn'+(rf.future?" on-orange":"")+'">📅 Bloque futuro</button>';
-      html+='</div>';
-    }
-
-    // MONTO PRIMERO
-    html+='<div class="lbl">'+(rf.future?"Monto estimado ($)":"Monto Bruto ($)")+'</div>';
-    html+='<input type="text" inputmode="decimal" id="rfGross" placeholder="0.00" value="'+rf.gross+'"/>';
-
-    // Day selector
-    html+='<div class="lbl">'+(rf.future&&rf.type==="amazon"?"Día programado":"Día")+'</div>';
-    html+='<div style="display:flex;flex-wrap:wrap;margin-bottom:12px;">';
-    for(var i=0;i<DAYS.length;i++){
-      html+='<button data-day="'+i+'" class="dbtn'+(rf.day===i?" on":"")+'">' +DAYS[i]+'</button>';
-    }
-    html+='</div>';
-
-    // Hours (Amazon)
-    if(rf.type==="amazon"){
-      html+='<div class="lbl">Horas <span style="color:#66bb6a;">('+c.hl+'h libres)</span></div>';
-      html+='<div style="display:flex;flex-wrap:wrap;margin-bottom:12px;">';
-      for(var i=0;i<AH.length;i++){
-        html+='<button data-hours="'+AH[i]+'" class="hbtn'+(rf.hours===AH[i]?" on":"")+'">'+AH[i]+'h</button>';
-      }
-      html+='</div>';
-    }
-
-    // Propinas - solo para bloques de 1h (Amazon) o siempre (Instacart)
-    var showTips = rf.type==="instacart" || rf.hours===1;
-    if(showTips){
-      html+='<div class="lbl">'+(rf.type==="amazon"&&!rf.future?"Propinas (~24h para llegar)":"Propinas")+'</div>';
-      html+='<div class="row">';
-      html+='<button data-rf="tipsPd:false" class="tbtn'+(!rf.tipsPd?" on-green":"")+'">💵 Disponible</button>';
-      if(rf.type==="amazon") html+='<button data-rf="tipsPd:true" class="tbtn'+(rf.tipsPd?" on-orange":"")+'">⏳ Pendiente</button>';
-      html+='</div>';
-      if(!rf.tipsPd){
-        html+='<input type="text" inputmode="decimal" id="rfTips" placeholder="0.00" value="'+rf.tips+'"/>';
-      } else {
-        html+='<div style="font-size:11px;color:#ffa726;padding:8px;background:#1a1000;border-radius:8px;margin-bottom:10px;">⏳ Edita el bloque cuando lleguen</div>';
-      }
-    } else if(rf.type==="amazon"){
-      // Reset tips if hours changed to non-1h
-      rf.tips=""; rf.tipsPd=false;
-      html+='<div style="font-size:11px;color:#546e7a;padding:8px;background:#0a1428;border-radius:8px;margin-bottom:10px;">Las propinas solo aplican a bloques de 1h</div>';
-    }
-
-    // Instant (Sunday Amazon)
-    if(rf.type==="amazon"&&isSun()&&!rf.future){
-      html+='<div style="display:flex;align-items:center;gap:8px;padding:10px;background:#1a1000;border-radius:8px;margin-bottom:10px;">';
-      html+='<input type="checkbox" id="rfInstant"'+(rf.instant?" checked":"")+' style="width:auto;margin-bottom:0;padding:0;"/>';
-      html+='<label for="rfInstant" style="font-size:12px;color:#ffa726;">⚡ Retiro instantáneo (pasa a semana siguiente)</label></div>';
-    }
-
-
-
-    // Preview
-    if(pg>0){
-      html+='<div class="preview">';
-      if(rf.type==="amazon"&&rf.hours) html+='<div style="color:#64b5f6;">⏱ '+rf.hours+'h · quedan '+Math.max(0,c.hl-(rf.hours||0))+'h después</div>';
-      html+='<div style="color:#e2e8f0;">Bruto: <b>'+fmt(pg)+'</b></div>';
-      html+='<div style="color:#ab47bc;">→ Capital One 20%: <b>-'+fmt(pg*0.2)+'</b></div>';
-      html+='<div style="color:#66bb6a;">→ BofA neto: <b>'+fmt(pg*0.8)+'</b></div>';
-      if(showTips&&!rf.tipsPd&&pt>0) html+='<div style="color:#ab47bc;">→ Capital One propinas: <b>'+fmt(pt)+'</b></div>';
-      html+='</div>';
-    }
-
-    var btnBg=rf.future&&rf.type==="amazon"?"linear-gradient(135deg,#e65100,#bf360c)":"linear-gradient(135deg,#1565c0,#0d47a1)";
-    var btnTxt=rf.future&&rf.type==="amazon"?"📅 Guardar Bloque Futuro":"+ Agregar Bloque";
-    html+='<button data-action="addblock" class="bigbtn" style="background:'+btnBg+';">'+btnTxt+'</button>';
-    html+='</div>';
-
-    // Hours bar
-    if(rf.type==="amazon") html+='<div class="card">'+hoursRow(c)+'</div>';
-
-    // Future blocks
-    if(st.future.length>0){
-      html+='<div class="card" style="border-color:#e65100;">';
-      html+='<div class="stitle" style="color:#ffa726;">📅 Programados ('+st.future.length+')</div>';
-      for(var i=0;i<st.future.length;i++){
-        var b=st.future[i];
-        html+='<div class="brow"><div style="flex:1;">';
-        html+='<div style="font-size:13px;color:#ffa726;font-weight:700;">'+b.hours+'h'+(b.day!==null&&b.day!==undefined?" · "+DAYS[b.day]:"")+(b.note?" · "+b.note:"")+'</div>';
-        if(b.gross>0) html+='<div style="font-size:11px;color:#64b5f6;">Bruto: '+fmt(b.gross)+' → Neto: '+fmt(b.gross*0.8)+'</div>';
-        else html+='<div style="font-size:11px;color:#546e7a;">Sin monto</div>';
-        if(b.tipsPd) html+='<div style="font-size:11px;color:#ffa726;">⏳ Propinas pendientes</div>';
-        else if(b.tips>0) html+='<div style="font-size:11px;color:#ab47bc;">Propinas: '+fmt(b.tips)+'</div>';
-        html+='</div><div style="display:flex;gap:6px;margin-left:8px;">';
-        html+='<button data-done="'+b.id+'" class="abtn" style="background:#1b5e20;">✅ Hecho</button>';
-        html+='<button data-delf="'+b.id+'" class="abtn" style="background:#b71c1c;">✕</button>';
-        html+='</div></div>';
-      }
-      html+='</div>';
-    }
-
-    // Amazon completed
-    if(st.amazon.length>0){
-      html+='<div class="card">';
-      html+='<div class="stitle" style="color:#42a5f5;">✅ Amazon ('+st.amazon.length+')</div>';
-      for(var i=0;i<st.amazon.length;i++){
-        var b=st.amazon[i];
-        html+='<div class="brow"><div style="flex:1;">';
-        html+='<div style="font-size:12px;color:#e2e8f0;">'+(b.day!==null&&b.day!==undefined?DAYS[b.day]+" · ":"")+b.hours+'h'+(b.instant?" ⚡":"")+'</div>';
-        html+='<div style="font-size:11px;color:#64b5f6;">Bruto: '+fmt(b.gross)+' → Neto: '+fmt(b.gross*0.8)+'</div>';
-        if(b.tipsPd) html+='<div style="font-size:11px;color:#ffa726;">⏳ Propinas pendientes</div>';
-        else if(b.tips>0) html+='<div style="font-size:11px;color:#ab47bc;">Propinas: '+fmt(b.tips)+'</div>';
-
-        html+='</div><div style="display:flex;gap:6px;margin-left:8px;">';
-        html+='<button data-edit="amazon:'+b.id+'" class="abtn" style="background:#1565c0;">✏️</button>';
-        html+='<button data-del="amazon:'+b.id+'" class="abtn" style="background:#b71c1c;">✕</button>';
-        html+='</div></div>';
-      }
-      html+='</div>';
-    }
-
-    // Instacart completed
-    if(st.instacart.length>0){
-      html+='<div class="card" style="border-color:#00695c;">';
-      html+='<div class="stitle" style="color:#26c6da;">🛒 Instacart ('+st.instacart.length+')</div>';
-      for(var i=0;i<st.instacart.length;i++){
-        var b=st.instacart[i];
-        html+='<div class="brow"><div style="flex:1;">';
-        html+='<div style="font-size:12px;color:#e2e8f0;">'+(b.day!==null&&b.day!==undefined?DAYS[b.day]+" · ":b.date||"")+'</div>';
-        html+='<div style="font-size:11px;color:#64b5f6;">Bruto: '+fmt(b.gross)+' → Neto: '+fmt(b.gross*0.8)+'</div>';
-        if(b.tipsPd) html+='<div style="font-size:11px;color:#ffa726;">⏳ Propinas pendientes</div>';
-        else if(b.tips>0) html+='<div style="font-size:11px;color:#ab47bc;">Propinas: '+fmt(b.tips)+'</div>';
-        html+='</div><div style="display:flex;gap:6px;margin-left:8px;">';
-        html+='<button data-edit="instacart:'+b.id+'" class="abtn" style="background:#1565c0;">✏️</button>';
-        html+='<button data-del="instacart:'+b.id+'" class="abtn" style="background:#b71c1c;">✕</button>';
-        html+='</div></div>';
-      }
-      html+='</div>';
-    }
-  }
-
-  // ===== BANK =====
-  if(tab==="bank"){
-    html+='<div class="card"><div style="font-size:12px;color:#64b5f6;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🏦 Bank of America Checking</div>';
-    html+='<div style="font-size:10px;color:#546e7a;margin-bottom:8px;">Para gastos del mes</div>';
-    html+='<div style="font-size:36px;font-weight:800;color:'+(st.checking>=0?"#66bb6a":"#ef5350")+';">'+fmt(st.checking)+'</div></div>';
-    html+='<div style="background:#1a0d2b;border-radius:12px;padding:16px;border:1px solid #4a1a6e;margin-bottom:12px;">';
-    html+='<div style="font-size:12px;color:#ce93d8;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">💰 Capital One Savings</div>';
-    html+='<div style="font-size:10px;color:#546e7a;margin-bottom:8px;">20% ahorro + propinas</div>';
-    html+='<div style="font-size:36px;font-weight:800;color:#ab47bc;">'+fmt(st.savings)+'</div></div>';
-    html+='<div class="card"><div class="stitle" style="color:#64b5f6;">Movimiento Manual</div>';
-    html+='<div class="lbl">Cuenta</div>';
-    html+='<select id="bAcct" style="margin-bottom:10px;"><option value="chk">🏦 BofA Checking</option><option value="sav">💰 Capital One Savings</option></select>';
-    html+='<div class="lbl">Tipo</div>';
-    html+='<select id="bType" style="margin-bottom:10px;"><option value="dep">⬆️ Depósito</option><option value="wit">⬇️ Retiro</option></select>';
-    html+='<div class="lbl">Monto ($)</div>';
-    html+='<input type="text" inputmode="decimal" id="bAmt" placeholder="0.00"/>';
-    html+='<button data-action="banktx" class="bigbtn" style="background:linear-gradient(135deg,#1565c0,#0d47a1);">Registrar</button></div>';
-  }
-
-  // ===== CARDS =====
-  if(tab==="cards"){
-    for(var i=0;i<st.cards.length;i++){
-      var cr=st.cards[i];
-      var pct=Math.min(100,Math.round(cr.bal/cr.lim*100));
-      html+='<div class="card" style="border-color:'+(cr.over>0?"#b71c1c":"#1e3a6e")+'">';
-      if(cr.over>0) html+='<div style="background:#b71c1c;color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;display:inline-block;margin-bottom:8px;">⚠️ ATRASADO '+fmt(cr.over)+'</div>';
-      html+='<div style="font-size:14px;font-weight:700;color:#90caf9;margin-bottom:8px;">'+cr.name+'</div>';
-      html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">';
-      html+='<div><div style="font-size:10px;color:#64b5f6;">Saldo</div><div style="font-size:20px;font-weight:800;color:#ef5350;">'+fmt(cr.bal)+'</div></div>';
-      html+='<div><div style="font-size:10px;color:#64b5f6;">Límite</div><div style="font-size:20px;font-weight:800;color:#e2e8f0;">'+fmt(cr.lim)+'</div></div>';
-      html+='<div><div style="font-size:10px;color:#64b5f6;">Mínimo</div><div style="font-size:16px;font-weight:700;color:#ffa726;">'+fmt(cr.min)+'</div><div style="font-size:10px;color:#90caf9;">Vence '+cr.due+'</div></div>';
-      html+='</div>';
-      html+='<div style="font-size:10px;color:#64b5f6;margin-bottom:4px;">Uso: '+pct+'%</div>';
-      html+='<div class="bar"><div class="barfill" style="width:'+pct+'%;background:'+(cr.bal>=cr.lim?"#ef5350":"#ffa726")+';"></div></div>';
-      html+='<button data-pay="'+cr.id+'" class="bigbtn" style="background:#6a1b9a;margin-top:10px;">💳 Pagar (desde Capital One)</button>';
-      html+='</div>';
-    }
-    var td=0; for(var i=0;i<st.cards.length;i++) td+=st.cards[i].bal;
-    html+='<div style="background:#1a0a0a;border-radius:10px;padding:14px;border:1px solid #4a1a1a;text-align:center;margin-bottom:12px;">';
-    html+='<div style="font-size:12px;color:#ef9a9a;">DEUDA TOTAL</div>';
-    html+='<div style="font-size:32px;font-weight:800;color:#ef5350;">'+fmt(td)+'</div></div>';
-  }
-
-  // ===== HISTORY =====
-  if(tab==="history"){
-    if(!st.history||st.history.length===0){
-      html+='<div style="text-align:center;color:#64b5f6;padding:40px;font-size:14px;">No hay historial aún.<br>Cierra la semana el domingo.</div>';
-    } else {
-      for(var i=0;i<st.history.length;i++){
-        var hh=st.history[i];
-        html+='<div class="card">';
-        html+='<div style="font-size:11px;color:#64b5f6;margin-bottom:8px;">Semana del '+new Date(hh.week).toLocaleDateString("es-US")+'</div>';
-        html+=rw("⏱ Horas",(hh.hw||0)+"h","#42a5f5");
-        html+=rw("Amazon neto",fmt(hh.an),"#42a5f5");
-        html+=rw("Instacart neto",fmt(hh.iN),"#26c6da");
-        html+='<div style="border-top:1px solid #1e3a6e;margin:6px 0;"></div>';
-        html+=rw("→ BofA",fmt(hh.toChk),"#66bb6a",true);
-        html+=rw("→ Capital One",fmt(hh.toCap),"#ab47bc",true);
-        html+='</div>';
-      }
-    }
-  }
-
-  html+='</div>'; // end padding
-
-  // ===== MODAL CLOSE WEEK =====
-  if(modal==="week"){
-    var c2=calc();
-    html+='<div id="modalBg" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;">';
-    html+='<div id="modalContent" style="background:#0d1b3e;border-radius:16px;padding:24px;width:100%;max-width:360px;border:1px solid #1565c0;">';
-    html+='<div style="font-size:16px;font-weight:700;margin-bottom:4px;">🌙 Cerrar Semana</div>';
-    html+='<div style="font-size:12px;color:#546e7a;margin-bottom:16px;">'+c2.hw+'h trabajadas</div>';
-    html+='<div style="background:#0d2b1a;border-radius:10px;padding:14px;margin-bottom:10px;">';
-    html+='<div style="font-size:11px;color:#64b5f6;margin-bottom:8px;font-weight:600;">🏦 Bank of America Checking</div>';
-    html+=rw("Amazon neto",fmt(c2.an),"#42a5f5")+rw("Instacart neto",fmt(c2.iN),"#26c6da")+rw("Carry-over",fmt(c2.co),"#ef5350");
-    html+='<div style="border-top:1px solid #1e3a6e;margin:8px 0;"></div>';
-    html+=rw("Total → BofA",fmt(c2.toChk),"#66bb6a",true);
-    html+='</div>';
-    html+='<div style="background:#1a0d2b;border-radius:10px;padding:14px;margin-bottom:16px;">';
-    html+='<div style="font-size:11px;color:#ce93d8;margin-bottom:8px;font-weight:600;">💰 Capital One Savings</div>';
-    html+=rw("Ahorro 20% Amazon",fmt(c2.as2),"#ffa726")+rw("Ahorro 20% Instacart",fmt(c2.is2),"#ffa726")+rw("Propinas",fmt(c2.at+c2.ct),"#ab47bc");
-    html+='<div style="border-top:1px solid #2a1a3e;margin:8px 0;"></div>';
-    html+=rw("Total → Capital One",fmt(c2.toCap),"#ab47bc",true);
-    html+='</div>';
-    if(c2.aig>0) html+='<div style="background:#1a0a00;border-radius:8px;padding:10px;margin-bottom:16px;font-size:12px;color:#ffa726;">⚡ '+fmt(c2.aig*0.8)+' pasa a próxima semana</div>';
-    html+='<div style="display:flex;gap:10px;">';
-    html+='<button data-action="closemodal" style="flex:1;background:#1a2744;color:#fff;border:none;border-radius:10px;padding:12px;font-weight:600;cursor:pointer;">Cancelar</button>';
-    html+='<button data-action="closeweek" style="flex:1;background:linear-gradient(135deg,#1b5e20,#2e7d32);color:#fff;border:none;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;">Confirmar ✓</button>';
-    html+='</div></div></div>';
-  }
-
-  // ===== MODAL EDIT =====
-  if(editData){
-    html+='<div id="modalBg" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);display:flex;align-items:center;justify-content:center;z-index:100;padding:20px;">';
-    html+='<div id="modalContent" style="background:#0d1b3e;border-radius:16px;padding:24px;width:100%;max-width:360px;border:1px solid #1565c0;">';
-    html+='<div style="font-size:16px;font-weight:700;margin-bottom:16px;">✏️ Editar Bloque</div>';
-    html+='<div class="lbl">Monto Bruto ($)</div>';
-    html+='<input type="text" inputmode="decimal" id="eGross" placeholder="0.00" value="'+editData.grossStr+'"/>';
-    if(editData.btype==="amazon"){
-      html+='<div class="lbl">Horas</div><div style="display:flex;flex-wrap:wrap;margin-bottom:12px;">';
-      for(var i=0;i<AH.length;i++) html+='<button data-ehours="'+AH[i]+'" class="hbtn'+(editData.hours===AH[i]?" on":"")+'">'+AH[i]+'h</button>';
-      html+='</div>';
-    }
-    var editShowTips = editData.btype==="instacart" || editData.hours===1;
-    if(editShowTips){
-      html+='<div class="lbl">Propinas</div>';
-      html+='<div class="row">';
-      html+='<button data-etipspd="false" class="tbtn'+(!editData.tipsPd?" on-green":"")+'">💵 Disponible</button>';
-      if(editData.btype==="amazon") html+='<button data-etipspd="true" class="tbtn'+(editData.tipsPd?" on-orange":"")+'">⏳ Pendiente</button>';
-      html+='</div>';
-      if(!editData.tipsPd){
-        html+='<input type="text" inputmode="decimal" id="eTips" placeholder="0.00" value="'+editData.tipsStr+'"/>';
-      } else {
-        html+='<div style="font-size:11px;color:#ffa726;padding:8px;background:#1a1000;border-radius:8px;margin-bottom:10px;">⏳ Pendiente — edita cuando lleguen</div>';
-      }
-    } else {
-      html+='<div style="font-size:11px;color:#546e7a;padding:8px;background:#0a1428;border-radius:8px;margin-bottom:10px;">Las propinas solo aplican a bloques de 1h</div>';
-    }
-
-    html+='<div style="display:flex;gap:10px;">';
-    html+='<button data-action="canceledit" style="flex:1;background:#1a2744;color:#fff;border:none;border-radius:10px;padding:12px;font-weight:600;cursor:pointer;">Cancelar</button>';
-    html+='<button data-action="saveedit" style="flex:1;background:linear-gradient(135deg,#1565c0,#0d47a1);color:#fff;border:none;border-radius:10px;padding:12px;font-weight:700;cursor:pointer;">Guardar ✓</button>';
-    html+='</div></div></div>';
-  }
-
-  document.getElementById("app").innerHTML=html;
-  attachEvents();
-}
-
-function attachEvents(){
-  // Sync input values on change (not on every keystroke for stability)
-  var rfGross=document.getElementById("rfGross");
-  if(rfGross){
-    rfGross.addEventListener("input",function(){rf.gross=this.value;});
-    rfGross.addEventListener("change",function(){rf.gross=this.value;});
-    rfGross.addEventListener("blur",function(){rf.gross=this.value;});
-    rfGross.addEventListener("keyup",function(){rf.gross=this.value;});
-    rfGross.addEventListener("paste",function(){var el=this;setTimeout(function(){rf.gross=el.value;},10);});
-  }
-  var rfTips=document.getElementById("rfTips");
-  if(rfTips){
-    rfTips.addEventListener("input",function(){rf.tips=this.value;});
-    rfTips.addEventListener("change",function(){rf.tips=this.value;});
-    rfTips.addEventListener("blur",function(){rf.tips=this.value;});
-    rfTips.addEventListener("keyup",function(){rf.tips=this.value;});
-  }
-  // Capture gross value when add button is touched (before click fires)
-  var addBtn=document.querySelector("[data-action='addblock']");
-  if(addBtn){
-    addBtn.addEventListener("touchstart",function(){
-      var g=document.getElementById("rfGross");
-      var t=document.getElementById("rfTips");
-      if(g) rf.gross=g.value;
-      if(t) rf.tips=t.value;
-    },{passive:true});
-  }
-
-  var rfInstant=document.getElementById("rfInstant");
-  if(rfInstant) rfInstant.addEventListener("change",function(){rf.instant=this.checked;});
-  var eGross=document.getElementById("eGross");
-  if(eGross) eGross.addEventListener("input",function(){if(editData)editData.grossStr=this.value;});
-  var eTips=document.getElementById("eTips");
-  if(eTips) eTips.addEventListener("input",function(){if(editData)editData.tipsStr=this.value;});
-
-
-  // All button clicks via delegation
-  document.getElementById("app").addEventListener("click",function(e){
-    var t=e.target;
-    while(t&&t.id!=="app"){
-      // Tab
-      if(t.dataset&&t.dataset.tab){tab=t.dataset.tab;render();return;}
-      // RF toggles
-      if(t.dataset&&t.dataset.rf){
-        var parts=t.dataset.rf.split(":");
-        var key=parts[0],val=parts[1];
-        if(val==="true") val=true;
-        else if(val==="false") val=false;
-        if(key==="type"){rf.type=val;rf.hours=null;}
-        else if(key==="future"){rf.future=val;}
-        else if(key==="tipsPd"){rf.tipsPd=val;if(val===true)rf.tips="";}
-        render();return;
-      }
-      // Day
-      if(t.dataset&&t.dataset.day!==undefined){rf.day=parseInt(t.dataset.day);render();return;}
-      // Hours
-      if(t.dataset&&t.dataset.hours!==undefined){rf.hours=parseFloat(t.dataset.hours);render();return;}
-      // Edit hours
-      if(t.dataset&&t.dataset.ehours!==undefined){
-        if(editData){
-          var eg=document.getElementById("eGross");
-          var et=document.getElementById("eTips");
-          var en=document.getElementById("eNote");
-          if(eg) editData.grossStr=eg.value;
-          if(et) editData.tipsStr=et.value;
-          if(en) editData.note=en.value;
-          editData.hours=parseFloat(t.dataset.ehours);
-          if(editData.hours!==1){editData.tipsPd=false;editData.tipsStr="";}
-        }
-        render();return;
-      }
-      // Edit tipsPd
-      if(t.dataset&&t.dataset.etipspd!==undefined){
-        if(editData){
-          // Save current input values before re-render
-          var eg=document.getElementById("eGross");
-          var en=document.getElementById("eNote");
-          if(eg) editData.grossStr=eg.value;
-          if(en) editData.note=en.value;
-          editData.tipsPd=t.dataset.etipspd==="true";
-          if(editData.tipsPd) editData.tipsStr="";
-        }
-        render();return;
-      }
-      // Actions
-      if(t.dataset&&t.dataset.action){
-        var a=t.dataset.action;
-        if(a==="addblock"){
-          rf.gross=document.getElementById("rfGross")?document.getElementById("rfGross").value:rf.gross;
-          rf.tips=document.getElementById("rfTips")?document.getElementById("rfTips").value:rf.tips;
-
-          rf.instant=document.getElementById("rfInstant")?document.getElementById("rfInstant").checked:rf.instant;
-          addBlock();return;
-        }
-        if(a==="openweek"){modal="week";render();return;}
-        if(a==="closemodal"){modal=null;render();return;}
-        if(a==="closeweek"){closeWeek();return;}
-        if(a==="banktx"){bankTx();return;}
-        if(a==="canceledit"){editData=null;render();return;}
-        if(a==="saveedit"){
-          if(editData){
-            var eg=document.getElementById("eGross");
-            var et=document.getElementById("eTips");
-
-            if(eg) editData.grossStr=eg.value;
-            if(et) editData.tipsStr=et.value;
-
-          }
-          saveEdit();return;
-        }
-      }
-      // Done future
-      if(t.dataset&&t.dataset.done){doneFuture(parseInt(t.dataset.done));return;}
-      // Del future
-      if(t.dataset&&t.dataset.delf){delFuture(parseInt(t.dataset.delf));return;}
-      // Edit block
-      if(t.dataset&&t.dataset.edit){var p=t.dataset.edit.split(":");openEdit(p[0],parseInt(p[1]));return;}
-      // Del block
-      if(t.dataset&&t.dataset.del){var p=t.dataset.del.split(":");delBlock(p[0],parseInt(p[1]));return;}
-      // Pay card
-      if(t.dataset&&t.dataset.pay){payCard(parseInt(t.dataset.pay));return;}
-      // Modal bg close - only if clicking the dark overlay directly
-      if(t.id==="modalBg"){modal=null;editData=null;render();return;}
-      // Stop bubble from going past modal content box
-      if(t.id==="modalContent"){return;}
-      t=t.parentElement;
-    }
-  });
-}
-
-function updatePreview(){}
-
-try{render();}catch(e){
-  document.getElementById("app").innerHTML=
-    '<div style="padding:40px;text-align:center;color:#ef5350;">'+
-    '<div style="font-size:40px;margin-bottom:16px;">⚠️</div>'+
-    '<div style="font-size:16px;font-weight:700;margin-bottom:8px;">Error al cargar</div>'+
-    '<div style="font-size:12px;color:#90caf9;margin-bottom:20px;">'+e.message+'</div>'+
-    '<button onclick="localStorage.clear();location.reload();" style="background:#1565c0;color:#fff;border:none;border-radius:10px;padding:12px 24px;font-size:14px;font-weight:700;cursor:pointer;">🔄 Reiniciar app</button>'+
+  // Week stats
+  document.getElementById("dash-week").innerHTML=
+    '<div class="stitle" style="color:#64b5f6;">Esta Semana</div>'+
+    '<div class="grid2">'+
+    sbox("Amazon Neto",fmt(c.an),"#42a5f5")+sbox("Instacart Neto",fmt(c.iN),"#26c6da")+
+    sbox("Total Neto",fmt(c.tn),"#66bb6a")+sbox("Ahorro 20%",fmt(c.ts),"#ffa726")+
+    sbox("Propinas",fmt(c.at),"#ab47bc")+sbox("Carry-over",fmt(c.co),"#ef5350")+
     '</div>';
+
+  // Transfer
+  document.getElementById("dash-transfer").innerHTML=
+    '<div class="stitle" style="color:#a5d6a7;">🌙 Transferencia del Domingo</div>'+
+    '<div style="background:#0d2b1a;border-radius:10px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">'+
+    '<div><div style="font-size:11px;color:#64b5f6;">🏦 Bank of America</div><div style="font-size:10px;color:#546e7a;">Neto + carry-over</div></div>'+
+    '<div style="font-size:22px;font-weight:800;color:#66bb6a;">'+fmt(c.toChk)+'</div></div>'+
+    '<div style="background:#1a0d2b;border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;">'+
+    '<div><div style="font-size:11px;color:#ce93d8;">💰 Capital One Savings</div><div style="font-size:10px;color:#546e7a;">20% + propinas</div></div>'+
+    '<div style="font-size:22px;font-weight:800;color:#ab47bc;">'+fmt(c.toCap)+'</div></div>';
+
+  // Balances
+  document.getElementById("dash-balances").innerHTML=
+    '<div class="card" style="margin-bottom:0;"><div style="font-size:10px;color:#64b5f6;margin-bottom:4px;">🏦 BofA Checking</div>'+
+    '<div style="font-size:22px;font-weight:800;color:'+(st.checking>=0?"#66bb6a":"#ef5350")+';">'+fmt(st.checking)+'</div>'+
+    '<div style="font-size:9px;color:#546e7a;">Gastos del mes</div></div>'+
+    '<div style="background:#1a0d2b;border-radius:12px;padding:14px;border:1px solid #4a1a6e;">'+
+    '<div style="font-size:10px;color:#ce93d8;margin-bottom:4px;">💰 Capital One</div>'+
+    '<div style="font-size:22px;font-weight:800;color:#ab47bc;">'+fmt(st.savings)+'</div>'+
+    '<div style="font-size:9px;color:#546e7a;">Ahorro acumulado</div></div>';
+
+  // Debt
+  document.getElementById("dash-debt").innerHTML=
+    '<div class="stitle" style="color:#ef9a9a;">Deuda Total</div>'+
+    '<div style="font-size:28px;font-weight:800;color:#ef5350;">'+fmt(c.td)+'</div>';
 }
+
+function sbox(l,v,col){
+  return '<div class="sbox"><div class="slbl">'+l+'</div><div class="sval" style="color:'+col+';">'+v+'</div></div>';
+}
+
+function refreshLists(){
+  var c=calc();
+  // Future
+  var fl=document.getElementById("future-list");
+  if(st.future.length>0){
+    var h='<div class="card" style="border-color:#e65100;"><div class="stitle" style="color:#ffa726;">📅 Programados ('+st.future.length+')</div>';
+    for(var i=0;i<st.future.length;i++){
+      var b=st.future[i];
+      h+='<div class="brow"><div style="flex:1;"><div style="font-size:13px;color:#ffa726;font-weight:700;">'+b.hours+'h'+(b.day!==null&&b.day!==undefined?" · "+DAYS[b.day]:"")+'</div>';
+      if(b.gross>0) h+='<div style="font-size:11px;color:#64b5f6;">Bruto: '+fmt(b.gross)+' → Neto: '+fmt(b.gross*0.8)+'</div>';
+      else h+='<div style="font-size:11px;color:#546e7a;">Sin monto</div>';
+      if(b.tipsPd) h+='<div style="font-size:11px;color:#ffa726;">⏳ Propinas pendientes</div>';
+      else if(b.tips>0) h+='<div style="font-size:11px;color:#ab47bc;">Propinas: '+fmt(b.tips)+'</div>';
+      h+='</div><div style="display:flex;">'+
+        '<button class="abtn" style="background:#1b5e20;" onclick="doneFuture('+b.id+')">✅</button>'+
+        '<button class="abtn" style="background:#b71c1c;" onclick="delFuture('+b.id+')">✕</button>'+
+        '</div></div>';
+    }
+    fl.innerHTML=h+'</div>';
+  } else fl.innerHTML="";
+
+  // Amazon
+  var al=document.getElementById("amazon-list");
+  if(st.amazon.length>0){
+    var h='<div class="card"><div class="stitle" style="color:#42a5f5;">✅ Amazon ('+st.amazon.length+')</div>';
+    for(var i=0;i<st.amazon.length;i++){
+      var b=st.amazon[i];
+      h+='<div class="brow"><div style="flex:1;">'+
+        '<div style="font-size:12px;color:#e2e8f0;">'+(b.day!==null&&b.day!==undefined?DAYS[b.day]+" · ":"")+b.hours+'h'+(b.instant?" ⚡":"")+'</div>'+
+        '<div style="font-size:11px;color:#64b5f6;">Bruto: '+fmt(b.gross)+' → Neto: '+fmt(b.gross*0.8)+'</div>';
+      if(b.tipsPd) h+='<div style="font-size:11px;color:#ffa726;">⏳ Propinas pendientes</div>';
+      else if(b.tips>0) h+='<div style="font-size:11px;color:#ab47bc;">Propinas: '+fmt(b.tips)+'</div>';
+      h+='</div><div style="display:flex;">'+
+        '<button class="abtn" style="background:#1565c0;" onclick="openEdit(\'amazon\','+b.id+')">✏️</button>'+
+        '<button class="abtn" style="background:#b71c1c;" onclick="delBlock(\'amazon\','+b.id+')">✕</button>'+
+        '</div></div>';
+    }
+    al.innerHTML=h+'</div>';
+  } else al.innerHTML="";
+
+  // Instacart
+  var il=document.getElementById("instacart-list");
+  if(st.instacart.length>0){
+    var h='<div class="card" style="border-color:#00695c;"><div class="stitle" style="color:#26c6da;">🛒 Instacart ('+st.instacart.length+')</div>';
+    for(var i=0;i<st.instacart.length;i++){
+      var b=st.instacart[i];
+      h+='<div class="brow"><div style="flex:1;">'+
+        '<div style="font-size:12px;color:#e2e8f0;">'+(b.day!==null&&b.day!==undefined?DAYS[b.day]+" · ":b.date||"")+'</div>'+
+        '<div style="font-size:11px;color:#64b5f6;">Bruto: '+fmt(b.gross)+' → Neto: '+fmt(b.gross*0.8)+'</div>';
+      if(b.tipsPd) h+='<div style="font-size:11px;color:#ffa726;">⏳ Propinas pendientes</div>';
+      else if(b.tips>0) h+='<div style="font-size:11px;color:#ab47bc;">Propinas: '+fmt(b.tips)+'</div>';
+      h+='</div><div style="display:flex;">'+
+        '<button class="abtn" style="background:#1565c0;" onclick="openEdit(\'instacart\','+b.id+')">✏️</button>'+
+        '<button class="abtn" style="background:#b71c1c;" onclick="delBlock(\'instacart\','+b.id+')">✕</button>'+
+        '</div></div>';
+    }
+    il.innerHTML=h+'</div>';
+  } else il.innerHTML="";
+}
+
+function refreshBank(){
+  document.getElementById("bank-bofa").innerHTML=
+    '<div style="font-size:12px;color:#64b5f6;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">🏦 Bank of America Checking</div>'+
+    '<div style="font-size:10px;color:#546e7a;margin-bottom:8px;">Para gastos del mes</div>'+
+    '<div style="font-size:36px;font-weight:800;color:'+(st.checking>=0?"#66bb6a":"#ef5350")+';">'+fmt(st.checking)+'</div>';
+  document.getElementById("bank-cap").innerHTML=
+    '<div style="font-size:12px;color:#ce93d8;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">💰 Capital One Savings</div>'+
+    '<div style="font-size:10px;color:#546e7a;margin-bottom:8px;">20% ahorro + propinas</div>'+
+    '<div style="font-size:36px;font-weight:800;color:#ab47bc;">'+fmt(st.savings)+'</div>';
+}
+
+function refreshCards(){
+  var h="";
+  for(var i=0;i<st.cards.length;i++){
+    var cr=st.cards[i];
+    var pct=Math.min(100,Math.round(cr.bal/cr.lim*100));
+    h+='<div class="card" style="border-color:'+(cr.over>0?"#b71c1c":"#1e3a6e")+'">';
+    if(cr.over>0) h+='<div style="background:#b71c1c;color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:6px;display:inline-block;margin-bottom:8px;">⚠️ ATRASADO '+fmt(cr.over)+'</div>';
+    h+='<div style="font-size:14px;font-weight:700;color:#90caf9;margin-bottom:8px;">'+cr.name+'</div>';
+    h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;">'+
+      '<div><div style="font-size:10px;color:#64b5f6;">Saldo</div><div style="font-size:20px;font-weight:800;color:#ef5350;">'+fmt(cr.bal)+'</div></div>'+
+      '<div><div style="font-size:10px;color:#64b5f6;">Límite</div><div style="font-size:20px;font-weight:800;color:#e2e8f0;">'+fmt(cr.lim)+'</div></div>'+
+      '<div><div style="font-size:10px;color:#64b5f6;">Mínimo</div><div style="font-size:16px;font-weight:700;color:#ffa726;">'+fmt(cr.min)+'</div><div style="font-size:10px;color:#90caf9;">Vence '+cr.due+'</div></div>'+
+      '</div>';
+    h+='<div style="font-size:10px;color:#64b5f6;margin-bottom:4px;">Uso: '+pct+'%</div>'+
+      '<div class="bar"><div class="barfill" style="width:'+pct+'%;background:'+(cr.bal>=cr.lim?"#ef5350":"#ffa726")+';"></div></div>';
+    h+='<div style="margin-top:10px;"><span class="lbl">Pago desde Capital One ($)</span>'+
+      '<input class="inp" type="number" inputmode="decimal" id="pay-inp-'+cr.id+'" placeholder="0.00" step="0.01" min="0"/>'+
+      '<button class="bigbtn" style="background:#6a1b9a;" onclick="payCard('+cr.id+')">💳 Registrar Pago</button></div>';
+    h+='</div>';
+  }
+  var td=0; for(var i=0;i<st.cards.length;i++) td+=st.cards[i].bal;
+  h+='<div style="background:#1a0a0a;border-radius:10px;padding:14px;border:1px solid #4a1a1a;text-align:center;">'+
+    '<div style="font-size:12px;color:#ef9a9a;">DEUDA TOTAL</div>'+
+    '<div style="font-size:32px;font-weight:800;color:#ef5350;">'+fmt(td)+'</div></div>';
+  document.getElementById("cards-list").innerHTML=h;
+}
+
+function refreshHist(){
+  var h="";
+  if(!st.history||st.history.length===0){
+    h='<div style="text-align:center;color:#64b5f6;padding:40px;font-size:14px;">No hay historial aún.<br>Cierra la semana el domingo.</div>';
+  } else {
+    for(var i=0;i<st.history.length;i++){
+      var hh=st.history[i];
+      h+='<div class="card"><div style="font-size:11px;color:#64b5f6;margin-bottom:8px;">Semana del '+new Date(hh.week).toLocaleDateString("es-US")+'</div>';
+      h+=rw("⏱ Horas",(hh.hw||0)+"h","#42a5f5");
+      h+=rw("Amazon neto",fmt(hh.an),"#42a5f5")+rw("Instacart neto",fmt(hh.iN),"#26c6da");
+      h+='<div style="border-top:1px solid #1e3a6e;margin:6px 0;"></div>';
+      h+=rw("→ BofA",fmt(hh.toChk),"#66bb6a",true)+rw("→ Capital One",fmt(hh.toCap),"#ab47bc",true);
+      h+='</div>';
+    }
+  }
+  document.getElementById("hist-list").innerHTML=h;
+}
+
+function showTab(id){
+  document.querySelectorAll(".tab").forEach(function(t){t.className="tab";});
+  document.querySelectorAll(".pg").forEach(function(p){p.className="pg";});
+  var tabs=["dash","reg","bank","cards","hist"];
+  var idx=tabs.indexOf(id);
+  document.querySelectorAll(".tab")[idx].className="tab on";
+  document.getElementById("pg-"+id).className="pg on";
+  if(id==="bank") refreshBank();
+  if(id==="cards") refreshCards();
+  if(id==="hist") refreshHist();
+}
+
+function refreshAll(){
+  refreshDash();
+  refreshLists();
+  refreshBank();
+  refreshCards();
+  refreshHist();
+  updateHoursBar();
+}
+
+// Init day buttons
+(function(){
+  var db=document.getElementById("day-btns");
+  for(var i=0;i<DAYS.length;i++){
+    var b=document.createElement("button");
+    b.className="dbtn";
+    b.textContent=DAYS[i];
+    b.dataset.i=i;
+    (function(idx){b.onclick=function(){setDay(idx);};})(i);
+    db.appendChild(b);
+  }
+})();
+
+// Init hour buttons
+(function(){
+  var hb=document.getElementById("hour-btns");
+  for(var i=0;i<AH.length;i++){
+    var b=document.createElement("button");
+    b.className="hbtn";
+    b.textContent=AH[i]+"h";
+    b.dataset.h=AH[i];
+    (function(h){b.onclick=function(){setHours(h);};})(AH[i]);
+    hb.appendChild(b);
+  }
+})();
+
+// Set today's day by default
+(function(){
+  var today=new Date().getDay(); // 0=Sun
+  setDay(today);
+})();
+
+// Init
+refreshAll();
+updateTipsVisibility();
+updateInstantVisibility();
 </script>
 </body>
 </html>
